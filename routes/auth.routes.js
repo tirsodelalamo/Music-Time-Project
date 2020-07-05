@@ -39,7 +39,7 @@ router.post("/signup", (req, res, next) => {
 // User login
 router.get('/login', (req, res) => res.render('auth/login', { "errorMsg": req.flash("error") }))
 router.post('/login', passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/profile",
     failureRedirect: "/login",
     failureFlash: true,
     passReqToCallback: true,
@@ -52,5 +52,49 @@ router.get("/logout", (req, res) => {
     req.logout()
     res.redirect("/login")
 })
+
+//PROFILE ACCESS
+
+const checkAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.redirect('/signup')
+
+router.get('/profile', checkAuthenticated, (req, res) =>{
+    res.render('user/profile', { user: req.user })
+        
+}) 
+
+router.get('/profile/edit/:id', checkAuthenticated, (req, res) => {
+    res.render('user/edit', {user: req.user})
+})
+
+router.post('/profile/edit/:id', checkAuthenticated, (req, res) => {
+
+    
+    const {username, password} = req.body
+    const salt = bcrypt.genSaltSync(bcryptSalt)
+    const hashPass = bcrypt.hashSync(password, salt)
+    
+//Campos repes
+    if (!username || !password) {
+        res.render("user/edit", { errorMsg: "Datos introducidos incorrectos" , user: req.user})
+        return
+    }
+
+    User
+        .findByIdAndUpdate(req.params.id, {
+            username,
+            password: hashPass
+        }, { new: true })
+        .then(user => {
+            console.log(user.username)
+             if (user.username) {
+                res.render("auth/signup", { errorMsg: "El usuario ya existe en la BBDD" })
+                return
+             }
+        })
+        .then(() => res.redirect("/"))
+        .catch(() => res.render("auth/signup", { errorMsg: "No se pudo actualizar el usuario" }))
+
+})
+
 
 module.exports = router
