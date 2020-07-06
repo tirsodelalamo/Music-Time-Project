@@ -7,6 +7,13 @@ const User = require("../models/user.model")
 const bcrypt = require("bcrypt")
 const bcryptSalt = 10
 
+//JSON DATA
+router.get('/api', (req, res) => {
+	User.find()
+		.then(users => res.json({ users }))
+		.catch(err => (console.log(err)))
+})
+
 
 // User signup
 router.get("/signup", (req, res) => res.render("auth/signup"))
@@ -94,6 +101,10 @@ router.post('/profile/edit/:id', checkAuthenticated, (req, res) => {
         .then(() => res.redirect("/"))
         .catch(() => res.render("auth/signup", { errorMsg: "No se pudo actualizar el usuario" }))
 
+})
+
+router.get('/profile/display', checkAuthenticated, (req, res) => {
+    res.render('user/display', {user: req.user})
 })
 
 
