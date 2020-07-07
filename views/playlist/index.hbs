@@ -1,0 +1,15 @@
+<form action="/playlist/new" method="post" id="playlistForm">
+    {{!-- <label for="data">Introduce el título de la playlist:</label>
+    <input name="title" type="text"> --}}
+    <label for="dataSearch">Introduce el término de búsqueda:</label>
+    <input name="artist" type="text" value="muse">
+    <select name="type">
+        <option value="artist-select">Artista</option>
+        <option value="genre-select">Género</option>
+
+    </select>
+    <button class="btn" id="btn-send">Mandar</button>
+</form>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../../javascripts/playlist.js"></script>
