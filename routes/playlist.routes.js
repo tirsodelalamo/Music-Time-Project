@@ -152,7 +152,7 @@ router.post("/new", (req, res, next) => {
     console.log('duration', duration)
 
     //ESPECIFICAR CUÁL
-    //getArtist(artist)
+    getArtist(artist)
     //getRandomTracks()
 
     //Devolver promises
