@@ -1,13 +1,22 @@
 <form action="/playlist/new" method="post" id="playlistForm">
     {{!-- <label for="data">Introduce el título de la playlist:</label>
     <input name="title" type="text"> --}}
+    <label for="dataSearch">Introduce el nombre de la lista de reproducción:</label>
+    <input name="playlist" type="text" value="lista de reproduccion">
+    <br>
     <label for="dataSearch">Introduce el término de búsqueda:</label>
     <input name="artist" type="text" value="muse">
+    <br>
+    <label for="dataSearch">Duracion del trayecto en minutos para que Escarlata la matemática se oriente:</label>
+    <input name="duration" type="num" value="60">
+
+
     <select name="type">
         <option value="artist-select">Artista</option>
         <option value="genre-select">Género</option>
 
     </select>
+    <br>
     <button class="btn" id="btn-send">Mandar</button>
 </form>
 

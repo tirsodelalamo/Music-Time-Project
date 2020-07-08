@@ -1,13 +1,23 @@
+/*spotify-green: #1ED760*/
+
 body {
   font-weight: 200;
   background-color: teal;
-  color: white; }
+  color: white;
+}
 
 h1, h2, h3 {
-  font-weight: 200; }
+  font-weight: 200;
+}
 
 .navbar {
-  margin-bottom: 70px; }
+  margin-bottom: 70px;
+}
+
+.navbar-collapse {
+  text-align: center;
+  margin: 0 auto;
+}
 
 #errorMsg {
   background-color: red;
@@ -15,6 +25,7 @@ h1, h2, h3 {
   font-weight: 400;
   text-align: center;
   padding: 10px 0;
-  margin-top: 5px; }
+  margin-top: 5px;
+}
 
 /*# sourceMappingURL=style.css.map */

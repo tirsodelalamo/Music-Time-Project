@@ -20,8 +20,27 @@
 //     baseURL: 'https://localhost:3000/playlist'
 // })
 
+// axios({
+//     url: 'https://accounts.spotify.com/api/token',
+//     method: 'post',
+//     params: {
+//         grant_type: 'client_credentials'
+//     },
+//     headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/x-www-form-urlencoded'
+//     },
+//     auth: {
+//         username: 'db5476df850242edbfc2443e875f75b2',
+//         password: 'e92667f3f707483d963d299ca82dee54'
+//     }
+// }).then(function (response) {
+//     console.log(response);
+// }).catch(function (error) {
+// });
 
-// /// Título playlist
+
+/// Título playlist
 // document.querySelector('#playlistForm').onsubmit = e => {
 //     console.log('entras?')
 //     e.preventDefault()
@@ -30,18 +49,11 @@
 //     //getArtist(artistInput)
 // }
 
-// function createPlaylist(title, duration) {
-//     axiosApp.get('/characters')
-//         .then(response => {
-
-//         })
-//         .catch(err => console.log('err', err))
-// }
 
 // function getArtist(artist) {
 //     console.log('entras en', artist)
 //     axios({
-//         url: 'https://api.spotify.com/v1/search',
+//         url: 'https://api.spotify.com/v1/artist',
 //         method: 'GET',
 //         dataType: 'json',
 //         data: {

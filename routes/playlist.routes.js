@@ -13,6 +13,7 @@ const spotifyApi = new SpotifyWebApi({
     /* CLIENT_ID=db5476df850242edbfc2443e875f75b2
     CLIENT_SECRET=e92667f3f707483d963d299ca82dee54 */
 });
+
 spotifyApi.clientCredentialsGrant().then((data) => {
     spotifyApi.setAccessToken(data.body["access_token"])
     console.log("todo correct con el spotify token")
@@ -25,7 +26,7 @@ function getArtist(value) {
     spotifyApi.searchArtists(value)
         .then((data) => {
             artist = data.body.artists.items[0].id
-            console.log('Id del artista', artist)
+            //console.log('Id del artista', artist)
             getAlbums(artist)
         })
         .catch((err) => console.log("The error while searching artists occurred: ", err));
@@ -37,70 +38,127 @@ function getAlbums(artist) {
         .then((data) => {
             let albumsId = data.body.items
             albumsArr = albumsId.map(e => e.id)
-            console.log('ID de albums', albumsArr)
-
+            //console.log('ID de albums', albumsArr)
             getTracks(albumsArr)
         })
         .catch((err) => console.log("The error while searching albums occurred: ", err))
 }
 
-let listaCanciones = []
-let tracksArr = []
-let tracksId = {}
-let stringy = []
+function getRandomTracks() {
+    let randomizer = getRandomSearch()
+    let randomList = []
+    spotifyApi.searchTracks(randomizer, { limit: 50 }) ///LÍMITE DE 50, sino se especifica es de 20
+        .then((data) => {
+            let datos = data.body.tracks.items
+            return datos
+        })
+        .then((data) => {
+            data.forEach(e => randomList.push(e))
+            //console.log('Lista Random', randomList)
+            getDetails(randomList)
+        })
+        .catch((err) => console.log("The error while searching random tracks occurred: ", err))
+}
+/////////////////////@perrydrums git
+function getRandomSearch() {
+    // A list of all characters that can be chosen.
+    const characters = 'abcdefghijklmnopqrstuvwxyz';
+    // Gets a random character from the characters string.
+    const randomCharacter = characters.charAt(Math.floor(Math.random() * characters.length));
+    let randomSearch = '';
+    // Places the wildcard character at the beginning, or both beginning and end, randomly.
+    switch (Math.round(Math.random())) {
+        case 0:
+            randomSearch = '%' + randomCharacter;
+            break;
+        case 1:
+            randomSearch = '%' + randomCharacter + '%';
+            break;
+    }
+    return randomSearch;
+}
+
+let arrayVacio = []
 function getTracks(albums) {
-    // let albumsStr = albums.join(',')
-    // console.log(albumsStr)
-    stringy = []
-    albums.forEach(elm => {
-        //console.log(elm)
-        getAlbumTracks(elm)
+    albums.forEach(element => {
+        spotifyApi.getAlbumTracks(element)
+            .then((data) => {
+                let tracksId = data.body.items
+                tracksId.forEach(elm => { arrayVacio.push(elm) })
+            })
+
+            .catch((err) => console.log("The error while searching tracks occurred: ", err))
+    })
+    //getRandom(2, arrayVacio)
+    getDetails(arrayVacio)
+    arrayVacio = [""]
+}
+
+function getDetails(songs) {
+    let objSongs = {}
+    let arrSong = []
+    songs.forEach(e => {
+        const datos =
+            { name: e.name, id: e.id, duration: Math.floor(e.duration_ms / 1000), artist: e.artists, preview: e.preview_url }
+        arrSong.push(datos)
+    })
+    //pasarle tiempo 
+    createRandomPlaylist(60, arrSong)
+}
+
+function createRandomPlaylist(durationMap, songs) {
+    //todo en segundos
+    const MAX = durationMap * 60
+    let cont = 0
+    let playlist = []
+    songs.shift() //porque la primera salía undefined??
+    const randomizedArr = shuffle(songs)
+    songs.forEach(e => {
+        if ((cont <= MAX)) {
+            playlist.push(e)
+            cont = cont + (e.duration)
+        }
+        // console.log(e.duration) //1m - 60.000,ms, matemáticas allá voy! | 1s - 1000ms
+    })
+    playlist.forEach(e => {
+        console.log('---------')
+        console.log(e.name)
     })
 }
-function getAlbumTracks(data) {
-    spotifyApi.getAlbumTracks(data)
-        .then((data) => {
-            //MAPEAR cada para sacar cada id de tracks y almacenar en array 
-            tracksId = data.body.items
-            tracksArr = tracksId.map(e => e.name)
-            console.log('ID de tracks', tracksArr.length)
-            return tracksArr
-        })
-        .then((data) => {
-            data.forEach(e => stringy.push(e))
-            console.log(stringy.length - 1)
-            return stringy
-        })
-        .catch((err) => console.log("The error while searching albums occurred: ", err))
-}
-
-
-function getRandom(num, tracks) {
-    console.log(tracksArr)
-    //spotifyApi.getAudioFeaturesForTrack('3Qm86XLflmIXVm1wcwkgDK') - spotifyApi.getAudioFeaturesForTracks(['4iV5W9uYEdYUVa79Axb7Rh', '3Qm86XLflmIXVm1wcwkgDK'])
-    let randomResults = [];
-    for (let i = 0; i < num; i++) {
-        randomResults.push(tracks[Math.floor(Math.random() * tracks.length)])
+//////Shuffle para array (stackoverflow)
+function shuffle(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
     }
-    //console.log(randomResults)
-    return randomResults;
+    return array;
 }
 
-/////////////////////RUTAS//////////////////
 router.get("/new", (req, res) => res.render('playlist/index'))
 
-router.post("/new", async (req, res, next) => {
-    try {
-        const data = req.body.artist
-        await getArtist(data)
-        // res.json(artistId)
-        // console.log(artistId)
-    } catch (err) {
-        console.log(err)
-        return next(err)
+router.post("/new", (req, res, next) => {
+    console.log(req.body)
+    const data = req.body.artist
+    const { playlist, artist, duration } = req.body
+    console.log('playlist', playlist)
+    console.log('artist', artist)
+    console.log('duration', duration)
 
-    }
+    //ESPECIFICAR CUÁL
+    //getArtist(artist)
+    //getRandomTracks()
+
+    //Devolver promises
+    // Promise.all([resultado]).then(data => {console.log(data[0])})
+    //     .then(data => console.log(data))
+
 })
-
 
 module.exports = router
