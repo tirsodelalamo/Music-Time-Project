@@ -10,6 +10,9 @@
        #map {
         height: 400px;
         width: 100%;
+
+        margin-top: 5%;
+        margin-left: 6%;
        }
 
        html, body {
@@ -58,13 +61,16 @@
         font-weight: 300;
       }
 
+      .clickPlay {
+          margin-left: 6%;
+          font-size: 35px;
+      }
+
 
     </style>
 </head>
 
 <body>
-
-    <h1>Introduzca ruta:</h1>
 
     <div>    
         <input id="origin-input" class="controls" type="text" placeholder="Elija origen">
@@ -91,6 +97,15 @@
 
     {{!-- UBICACION MAPA --}}
     <figure id="map"></figure>
+
+    
+    <a class="clickPlay" href="display/playlist">Introduce tu ruta y haz click para obtener tu playlist!</a>
+    <br>
+
+    {{!-- PRUEBA OBTENCIÓN TIEMPO --}}
+    <label for="inputDuration">Duración del trayecto: </label>
+    <input id="inputDuration" type="text" value="">
+    
 
     {{!-- UBICACION SCRIPTS RELACIONADOS CON MAPS --}}
 

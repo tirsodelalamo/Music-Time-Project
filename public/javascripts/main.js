@@ -26,6 +26,7 @@ function initMap() {
     var originInput = document.getElementById('origin-input');
     var destinationInput = document.getElementById('destination-input');
     var modeSelector = document.getElementById('mode-selector');
+    document.getElementById("inputDuration")
   
     var originAutocomplete = new google.maps.places.Autocomplete(originInput);
     // Specify just the place data fields that you need.
@@ -97,7 +98,9 @@ function initMap() {
         },
         function(response, status) {
           if (status === 'OK') {
-            console.log(response)
+            console.log(response.routes[0].legs[0].duration.text) //DURACION TRAYECTO
+            const durationRoute = response.routes[0].legs[0].duration.text
+            document.querySelector("#inputDuration").value = durationRoute 
             me.directionsRenderer.setDirections(response);
           } else {
             window.alert('Directions request failed due to ' + status);
