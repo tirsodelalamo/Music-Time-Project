@@ -107,5 +107,9 @@ router.get('/profile/display', checkAuthenticated, (req, res) => {
     res.render('user/display', {user: req.user})
 })
 
+router.get('/profile/display/playlist', checkAuthenticated, (req, res) => {
+    res.render('playlist/index', {user: req.user})
+})
+
 
 module.exports = router
