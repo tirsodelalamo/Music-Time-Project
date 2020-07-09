@@ -1,6 +1,6 @@
 body {
   font-weight: 200;
-  background-color: teal;
+  background-color: #72B29D;
   color: white;
   text-align: center; }
 
@@ -19,35 +19,29 @@ h1, h2, h3 {
 a {
   color: white; }
 
-.profile {
-  text-align: center;
-  margin-top: 10%;
-  margin-left: 5%; }
+hr {
+  width: 50%; }
 
-.login {
-  text-align: center;
-  margin-top: 10%;
-  margin-left: 5%; }
+.plList {
+  margin-top: 15px; }
 
-.display {
-  text-align: center;
-  margin-top: 10%;
-  margin-left: 5%; }
+.linkProfile {
+  font-size: 20px; }
 
-.edit {
+.profile, .login, .display, .edit {
   text-align: center;
   margin-top: 10%;
   margin-left: 5%; }
 
 .container {
-  margin: 0;
-  padding: 0; }
+  margin-left: 0;
+  padding-left: 0; }
 
 .center {
   display: flex;
   width: 100vw;
   height: 91.3vh;
-  background-color: black;
+  background-color: teal;
   background-image: url(https://images.unsplash.com/photo-1446080501695-8e929f879f2b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=34658e73aff775c8d4eec54bbfd1c011);
   background-repeat: no-repeat;
   background-position: center;
@@ -116,5 +110,56 @@ a {
     top: -1px;
     left: -1px;
     clip: rect(31px, 9999px, 149px, 0); } }
+
+#map {
+  height: 400px;
+  width: 100%;
+  margin-top: 5%;
+  margin-left: 6%; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); }
+
+#origin-input,
+#destination-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 200px; }
+
+#origin-input:focus,
+#destination-input:focus {
+  border-color: #4d90fe; }
+
+#mode-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  margin-left: 12px;
+  padding: 5px 11px 0px 11px; }
+
+#mode-selector label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300; }
+
+.clickPlay {
+  margin-left: 6%;
+  font-size: 15px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,17 @@
+
+<div class="col-md-3">
+    <article class="card">
+        <div class="card-body">
+            <h1 class="card-title">{{playlist.title}}</h1>
+            <hr>
+            <h2>Tracks</h2>
+            <ul>
+                {{#each playlist.tracks}}
+                <li>{{playlist.tracks.name}}</li>
+                {{/each}}
+            </ul>
+            <h2>Duration</h2>
+            {{playlist.duration}}
+        </div>
+    </article>
+</div>

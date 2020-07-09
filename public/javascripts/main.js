@@ -97,15 +97,17 @@ function initMap() {
         },
         function(response, status) {
           if (status === 'OK') {
-            console.log(response.routes[0].legs[0].duration.text) //DURACION TRAYECTO
-            const durationRoute = response.routes[0].legs[0].duration.text
-            document.querySelector("#inputDuration").value = durationRoute 
+            const durationHMS = response.routes[0].legs[0].duration.text //DURACION TRAYECTO
+            const durationRoute = response.routes[0].legs[0].duration.value/60
             me.directionsRenderer.setDirections(response);
+            document.querySelector("#durationMap").value= durationHMS
+            document.querySelector("#durationMin").value = durationRoute 
           } else {
             window.alert('Directions request failed due to ' + status);
           }
         });
   };
+
   
   
   
