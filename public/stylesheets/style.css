@@ -117,4 +117,237 @@ a {
     left: -1px;
     clip: rect(31px, 9999px, 149px, 0); } }
 
+/**********************************************/
+/* Spoti green: #23CF5F
+rgb(35,207,95)*/
+/*----------------GLOBAL-----------------*/
+.title-letter {
+  font-family: 'Proza Libre', sans-serif; }
+
+.body-letter {
+  font-family: 'Open Sans', sans-serif; }
+
+body {
+  font-weight: 200;
+  /*background-color: teal;*/
+  background: #f3f0f1;
+  color: white;
+  text-align: center;
+  width: 100vw;
+  height: 100vh; }
+
+/*----------------VIEW PLAYLIST-----------------*/
+.playlist-view {
+  font-size: 2em; }
+
+.playlist-view .title-letter {
+  font-weight: bold; }
+
+input {
+  margin-top: 25px;
+  line-height: 100px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border: 1px solid #23cf5f;
+  width: 350px;
+  height: 70px !important; }
+
+input:focus {
+  outline: 3px solid #23cf5f; }
+
+dd.playlist-view .btn {
+  margin-top: 10px;
+  background-color: rgba(35, 207, 95, 0.4);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  padding: 15px 40px; }
+
+/*----------------CURSOR INPUT PARPADEO-----------------*/
+.cursor {
+  position: relative; }
+
+.cursor i {
+  position: absolute;
+  width: 1px;
+  height: 80%;
+  background-color: gray;
+  left: 5px;
+  top: 10%;
+  animation-name: blink;
+  animation-duration: 800ms;
+  animation-iteration-count: infinite;
+  opacity: 1; }
+
+.cursor input:focus + i {
+  display: none; }
+
+@keyframes blink {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+/*********************************************************************************/
+#btn-send {
+  width: 400px;
+  height: 70px; }
+
+.btn-green {
+  color: black;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #ffffff;
+  width: 250px;
+  padding: 10px;
+  border: 4px solid black;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+  margin-bottom: 30px; }
+
+.btn-green:hover {
+  color: #ffffff;
+  background: #23cf5f;
+  border-color: #23cf5f;
+  transition: all 0.4s ease 0s; }
+
+/*-----------------BTN SAVE START AGAIN SHUFFLE------------------------------*/
+.bouncy {
+  animation: bouncy 5s infinite linear;
+  position: relative; }
+
+@keyframes bouncy {
+  0% {
+    top: 0em; }
+  40% {
+    top: 0em; }
+  43% {
+    top: -0.9em; }
+  46% {
+    top: 0em; }
+  48% {
+    top: -0.4em; }
+  50% {
+    top: 0em; }
+  100% {
+    top: 0em; } }
+
+/*-----------------------------------------------*/
+h1, h2, h3 {
+  font-weight: 200;
+  text-align: center; }
+
+#errorMsg {
+  background-color: red;
+  color: white;
+  font-weight: 400;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 5px; }
+
+a {
+  color: white; }
+
+.profile {
+  text-align: center;
+  margin-top: 10%;
+  margin-left: 5%; }
+
+.login {
+  text-align: center;
+  margin-top: 10%;
+  margin-left: 5%; }
+
+.display {
+  text-align: center;
+  margin-top: 10%;
+  margin-left: 5%; }
+
+.edit {
+  text-align: center;
+  margin-top: 10%;
+  margin-left: 5%; }
+
+.container {
+  margin: 0;
+  padding: 0; }
+
+.center {
+  display: flex;
+  width: 100vw;
+  height: 91.3vh;
+  background-color: black;
+  background-image: url(https://images.unsplash.com/photo-1446080501695-8e929f879f2b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=34658e73aff775c8d4eec54bbfd1c011);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; }
+
+.center__text {
+  margin: auto;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 120px;
+  text-transform: uppercase; }
+
+.glitch {
+  position: relative;
+  color: white;
+  mix-blend-mode: lighten; }
+
+.glitch:before, .glitch:after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: black;
+  clip: rect(0, 0, 0, 0); }
+
+.glitch:before {
+  left: -1px;
+  text-shadow: 1px 0 rgba(255, 0, 0, 0.7); }
+
+.glitch:after {
+  left: 1px;
+  text-shadow: -1px 0 rgba(0, 0, 255, 0.7); }
+
+.glitch:hover:before {
+  text-shadow: 4px 0 rgba(255, 0, 0, 0.7);
+  animation: glitch-loop-1 0.8s infinite ease-in-out alternate-reverse; }
+
+.glitch:hover:after {
+  text-shadow: -5px 0 rgba(0, 0, 255, 0.7);
+  animation: glitch-loop-2 0.8s infinite ease-in-out alternate-reverse; }
+
+@keyframes glitch-loop-1 {
+  0% {
+    clip: rect(36px, 9999px, 9px, 0); }
+  25% {
+    clip: rect(25px, 9999px, 99px, 0); }
+  50% {
+    clip: rect(50px, 9999px, 102px, 0); }
+  75% {
+    clip: rect(30px, 9999px, 92px, 0); }
+  100% {
+    clip: rect(91px, 9999px, 98px, 0); } }
+
+@keyframes glitch-loop-2 {
+  0% {
+    top: -1px;
+    left: 1px;
+    clip: rect(65px, 9999px, 119px, 0); }
+  25% {
+    top: -6px;
+    left: 4px;
+    clip: rect(79px, 9999px, 19px, 0); }
+  50% {
+    top: -3px;
+    left: 2px;
+    clip: rect(68px, 9999px, 11px, 0); }
+  75% {
+    top: 0px;
+    left: -4px;
+    clip: rect(95px, 9999px, 53px, 0); }
+  100% {
+    top: -1px;
+    left: -1px;
+    clip: rect(31px, 9999px, 149px, 0); } }
+
+/*# sourceMappingURL=style.css.map */
+
 /*# sourceMappingURL=style.css.map */

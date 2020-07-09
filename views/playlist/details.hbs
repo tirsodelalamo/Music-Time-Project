@@ -1,0 +1,19 @@
+<h1>NUEVA PLAYLIST</h1>
+<hr>
+<h2>TÍTULO DE LA PLAYLIST</h2>
+{{playlist.title}}
+<hr>
+<h2>ARTISTA</h2>
+{{playlist.artist}}
+<hr>
+<h2>TRACKS</h2>
+<ul>
+    {{#each playlist.tracks}}
+    <li>{{name}}</li>
+    {{/each}}
+</ul>
+<hr>
+<h2>DURACIÓN</h2>
+{{playlist.duration}}
+<hr>
+<a href="/profile">Volver a perfil</a>
