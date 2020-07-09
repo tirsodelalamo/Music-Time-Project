@@ -2,22 +2,24 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const playlistSchema = new Schema({
-    title: {
-        type: String,
-    },
+   title: {
+            type: String,
+            default: 'Playlist',
+            maxlength: 25
+        },
 
     tracks: {
-        type: [String],
-    },
-
-    user: { type: Schema.Types.ObjectId, ref: 'User' },
+            type :[String],
+        },
+    
+    user: { type: Schema.Types.ObjectId, ref: 'User' },    
 
     duration: {
-        type: Number,
-    },
+    	    type: Number,
+        },
 
     artist: {
-        type: String,
+            type: String,
     },
 
 }, {
