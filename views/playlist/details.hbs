@@ -1,12 +1,34 @@
-<main>
-    <h1>PLAYLIST</h1>
-
-    <div class="row">
-
+<main style='color:black'>
+    <h1 class="col-12 text-center marker-letter margin-top" style="margin-bottom: 50px;">New Playlist</h1>
+    <p style="margin-top: -45px" class="text-center title-letter text-muted"><em>by</em> </p>
+    <p  class="text-center title-letter text-muted">username </p>
+    <div class="col">
         {{#each data}}
-        {{>playlistCard this}}
-        {{/each}}
+        <div class="row d-flex">
+            <div class="col-12 margin-top">
+                <h3 style="display:inline">{{name}}</h3>
+                <p style="display:inline" class="muted">by</p>
+                <p style="display:inline">
+                    {{#each artist}}
+                    {{name}}
+                    {{/each}}
+                </p>
+                <br>
+                <audio controls src=" {{preview}}">
+                    Your browser does not support the
+                    <code>audio</code> element.
+                </audio>
+                {{/each}}
+            </div>
 
-    </div>
-    <a href="/profile">Volver a perfil</a>
+        </div>
+        <div class="row margin-top d-flex justify-content-between">
+            <div class="col-12">
+                <a href="/profile" class="btn btn-lg btn-green title-letter btn-playlist">Go back</a>
+                <a href="/profile" class=" bouncy btn btn-lg btn-green title-letter btn-playlist">SAVE!</a>
+                <a class="btn btn-lg btn-green title-letter btn-playlist">Delete</a>
+
+            </div>
+        </div>
+
 </main>

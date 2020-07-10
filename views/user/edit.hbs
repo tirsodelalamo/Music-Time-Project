@@ -1,17 +1,19 @@
 <div class="edit">
-<h1>Editar perfil</h1>
-<form action="/profile/edit/{{user.id}}" method="post">
-  <div class="form-group">
-    <label for="name-input">Nombre</label>
-    <input name="username" type="text" class="form-control" value={{user.username}} id="name-input">
-  </div>
-  <div class="form-group"> 
-    <label for="password">Contraseña</label>
-    <input name="password" type="password" class="form-control" placeholder="Contraseña" id="password">   
-  </div>
-  <div class="form-group">
-    <p>{{errorMsg}}</p>
+  <h1>Edit your profile</h1>
+  <form action="/profile/edit/{{user.id}}" method="post">
+    <div class="form-group">
+      <label for="name-input">Username</label>
+      <input name="username" type="text" class="form-control text-center rq-form-element" value={{user.username}}
+        id="name-input">
     </div>
-  <button type="submit" class="btn btn-dark">Editar</button>
-</form>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input name="password" type="password" class="form-control text-center rq-form-element" placeholder="Contraseña"
+        id="password">
+    </div>
+    <div class="form-group">
+      <p>{{errorMsg}}</p>
+    </div>
+    <button type="submit" class="btn btn-dark">Edit</button>
+  </form>
 </div>

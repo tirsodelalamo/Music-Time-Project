@@ -1,19 +1,19 @@
 <div class="login row justify-content-center">
     <div class="col-md-6">
 
-        <h1>Inicio de sesión</h1>
+        <h1 class="title-letter">Login</h1>
 
         <form action="/login" method="POST">
             <div class="form-group">
-                <label for="field1">Nombre de usuario</label>
-                <input name="username" type="text" class="form-control" id="field1">
+                <label for="field1">Username</label>
+                <input name="username" type="text" class="form-control text-center rq-form-element" id="field1">
             </div>
             <div class="form-group">
-                <label for="field2">Contraseña</label>
-                <input name="password" type="password" class="form-control" id="field2">
+                <label for="field2">Password</label>
+                <input name="password" type="password" class="form-control text-center rq-form-element" id="field2">
             </div>
 
-            <button type="submit" class="btn btn-dark btn-block btn-lg">Iniciar sesión</button>
+            <button type="submit" class="btn btn-dark btn-block btn-lg">Login</button>
 
             {{#if errorMsg}}
             <div id="errorMsg">{{{errorMsg}}}</div>
@@ -21,6 +21,6 @@
 
         </form>
 
-        <p>¿No tienes cuenta? <a href="/signup">¡Regístrate!</a></p>
+        <p>Don't have an account? <a href="/signup">Sign up!</a></p>
     </div>
 </div>

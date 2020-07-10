@@ -76,7 +76,6 @@
 
 <body>
 
-
   <body>
 
     <div>
@@ -106,12 +105,48 @@
     <figure id="map"></figure>
 
     
-    <a class="clickPlay" href="display/playlist">Introduce tu ruta y haz click para obtener tu playlist!</a>
+    {{!-- <a class="clickPlay" href="display/playlist">Introduce tu ruta y haz click para obtener tu playlist!</a> --}}
     <br>
 
     {{!-- PRUEBA OBTENCIÓN TIEMPO --}}
-    <label for="inputDuration">Duración del trayecto: </label>
-    <input id="inputDuration" type="text" value="">
+    {{!-- <label for="inputDuration">Duración del trayecto: </label>
+    <input id="inputDuration" type="text" value=""> --}}
+
+<div style=' color:black' class="body-letter playlist-view row">
+    <div class="col-12">
+        <form action="/playlist/details" method="post" id="playlistForm">
+            <div class="form-group">
+
+                <div class="container">
+                    <div class="row vh-100 vw-100 d-flex justify-content-center align-items-center">
+
+                        <div style=" display:  " class="text-center col-12">
+                            <label class="marker-letter " for="playlist">Playlist title</label>
+                            <br>
+                            <div class="cursor">
+                                <input value="prueba lista" class="input form-control-lg  rq-form-element"
+                                    name="playlist" type="text" value="" autofocus> <i></i>
+                            </div>
+                        </div>
+
+                        <label for="inputDuration">Duration </label>
+                        <input id="inputDuration" name="duration" type="text" value="">
+
+                        <div style=" display: " class="col-12 ">
+
+                            <div style=" display: " class="col-12 text-center">
+                                <button type="submit" id="btn-send"
+                                    class="btn btn-lg btn-green title-letter">GENERATE</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+        </form>
+    </div>
+</div>
     
 
     {{!-- UBICACION SCRIPTS RELACIONADOS CON MAPS --}}

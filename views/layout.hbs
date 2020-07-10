@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Permanent+Marker&display=swap"
+    rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Proza+Libre:ital,wght@0,400;0,800;1,700&display=swap"
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap"
@@ -16,9 +19,9 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-light ">
 
-    <a class="navbar-brand" href="/">{{title}}</a> 
+    <a class="navbar-brand marker-letter " href="/">{{title}}</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,20 +31,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/">Inicio</a>
+          <a class="nav-link" href="/login">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/login">Iniciar sesión</a>
+          <a class="nav-link" href="/signup">Sign up</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/signup">Registro</a>
+          <a class="nav-link" href="/profile">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/logout">Cerrar sesión</a>
+          <a class="nav-link" href="/logout">Log out</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/profile">Perfil</a>
-        </li>
+
       </ul>
     </div>
   </nav>
@@ -56,7 +57,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
   <script src="/javascripts/script.js"></script>
-
 
 </body>
 

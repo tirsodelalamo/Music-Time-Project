@@ -9,7 +9,7 @@ const SpotifyWebApi = require("spotify-web-api-node"); //meter aquí configs
 const spotifyApi = new SpotifyWebApi({
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    redirectUri: 'http:localhost:3000/playlist/new'
+    redirectUri: 'http:localhost:3000/playlist/details'
     /* CLIENT_ID=db5476df850242edbfc2443e875f75b2
     CLIENT_SECRET=e92667f3f707483d963d299ca82dee54 */
 });
@@ -60,7 +60,8 @@ function getAlbums(artist) {
 //     return ("HOLA", data)
 // }
 
-function getRandomTracks() {
+function getRandomTracks(duration) {
+    console.log(duration)
     return new Promise(resolve => {
         let randomizer = getRandomSearch()
         let randomList = []
@@ -72,8 +73,8 @@ function getRandomTracks() {
             .then((data) => {
                 data.forEach(e => randomList.push(e))
                 //console.log('Lista Random', randomList)
-                resolve(getDetails(randomList));
-                return getDetails(randomList)
+                
+                return resolve(getDetails(randomList, duration))
             })
             .catch((err) => console.log("The error while searching random tracks occurred: ", err))
     })
@@ -112,7 +113,7 @@ function getTracks(albums) {
     arrEmpty = [""]
 }
 
-function getDetails(songs) {
+function getDetails(songs, duration1) {
     let arrSong = []
     songs.forEach(e => {
         const datos =
@@ -120,10 +121,10 @@ function getDetails(songs) {
         arrSong.push(datos)
     })
     //pasarle tiempo 
-    return createRandomPlaylist(60, arrSong)
+    return createRandomPlaylist(duration1, arrSong)
 }
 
-const locuritaPlaylist = []
+
 function createRandomPlaylist(durationMap, songs) {
     //todo en segundos
     const MAX = durationMap * 60
@@ -161,23 +162,22 @@ function shuffle(array) {
     return array;
 }
 
-router.get("/new", (req, res) => res.render('playlist/index'))
+router.get("/details", (req, res) => res.render('playlist/details'))
 
-router.post("/new", (req, res, next) => {
+router.post("/details", (req, res, next) => {
     console.log(req.body)
 
-    const { playlist, list, artist, duration } = req.body
-    console.log('playlist', playlist)
-    console.log('artist', artist)
+    const { playlist, duration } = req.body
+    console.log('playlist', playlist) //create aqui
     console.log('duration', duration)
-    console.log('boton', list)
+
 
     const allUsers = User.find()
 
     //METER IF PARA ASYNCALLs DISTINTAS, o meterlas en el mismo cuando furule la de artistas
-    async function asyncCall() {
-        console.log('calling');
-        const resultRandom = await getRandomTracks();
+    async function asyncCall(duration) {
+        console.log(duration);
+        const resultRandom = await getRandomTracks(duration);
         return resultRandom
     }
     async function asyncCallArt(artist) {
@@ -187,8 +187,8 @@ router.post("/new", (req, res, next) => {
         return resultArtist
     }
 
-    asyncCall().then(data => {
-        res.send(data)
+    asyncCall(duration).then(data => {
+        res.render('playlist/details', {data})
         console.log(data)
     })
 
@@ -196,6 +196,24 @@ router.post("/new", (req, res, next) => {
     //     res.send(data)
     //     console.log(data)
     // })
+
+})
+
+router.get('/new', (req, res) => res.render('playlist/details')) //no vale
+
+router.post('/new', (req, res) => {
+
+    console.log(req.body)
+
+    const {title, tracks, user, duration} = req.body
+
+    console.log('REQBODY', {title, tracks, user, duration})
+
+        console.log('hola',tracks)
+    Playlist
+        .create({title, tracks, user, duration})
+        .then(() => res.redirect('/playlist/details')) //MIRAR BIEN
+        .catch(err => console.log(err))
 
 })
 

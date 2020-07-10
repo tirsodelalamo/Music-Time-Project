@@ -1,4 +1,7 @@
+
 function initMap() {
+
+  
 
   var map = new google.maps.Map(document.getElementById('map'), {
     mapTypeControl: false,
@@ -97,16 +100,22 @@ AutocompleteDirectionsHandler.prototype.route = function () {
     },
     function (response, status) {
       if (status === 'OK') {
-        const durationHMS = response.routes[0].legs[0].duration.text //DURACION TRAYECTO
-        const durationRoute = response.routes[0].legs[0].duration.value / 60
-        document.querySelector("#durationMap").value = durationHMS
-        document.querySelector("#durationMin").value = durationRoute
+
+        
+        // const durationHMS = response.routes[0].legs[0].duration.text //DURACION TRAYECTO
+        const durationRoute = Math.ceil(response.routes[0].legs[0].duration.value / 60)
+        // console.log(durationRoute)
         me.directionsRenderer.setDirections(response);
+        document.querySelector("#inputDuration").value = durationRoute
+        // document.querySelector("#durationMap").value = durationHMS
       } else {
         window.alert('Directions request failed due to ' + status);
       }
     });
 };
+
+
+
 
 
 

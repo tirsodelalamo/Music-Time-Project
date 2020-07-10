@@ -1,19 +1,4 @@
-body {
-  font-weight: 200;
-  background-color: #72B29D;
-  color: white;
-  text-align: center;
-}
-
-h1, h2, h3 {
-  font-weight: 200;
-  text-align: center;
-}
-
-.navbar {
-  // margin-bottom: 70px;
-}
-
+$spotify: rgb(35, 207, 95);
 #errorMsg {
   background-color: red;
   color: white;
@@ -22,61 +7,87 @@ h1, h2, h3 {
   padding: 10px 0;
   margin-top: 5px;
 }
-
-a {
-  color: white;
+.plList h1 {
+  margin-top: 65px;
+  font-size: 2em;
 }
-
-hr {
-  width: 50%;
-}
-
-.plList {
-  margin-top: 15px;;
-}
-
 .linkProfile {
   font-size: 20px;
 }
-
 .profile, .login, .display, .edit {
   text-align: center;
   margin-top: 10%;
   margin-left: 5%;
 }
+/***************************NAVBAR********************/
 
-.container {
-  margin-left:0;
-  padding-left:0
+.navbar {
+  background-color:  $spotify;
+  color: white;
+}
+.navbar-brand {
+font-size: 1.5em;
+padding-left: 20px;
+}
+
+.navbar a {
+  color: white;
 
 }
 
-// ESTILOS PARA PORTADA
+.nav-link{
+  color: white !important;
+  font-size: 1.1em;
+  text-transform: uppercase;
+}
 
-.center {
+.navbar-toggler {
+  border-color: rgb(255,102,203);
+  margin-right: 50px;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.navbar-collapse{
+  padding-right: 20px;
+}
+/*************************PORTADA******************************/
+.portada {
   display: flex;
-  width: 100vw;
-  height: 91.3vh;
-  background: {
-    color: teal;
-    image: url(https://images.unsplash.com/photo-1446080501695-8e929f879f2b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=34658e73aff775c8d4eec54bbfd1c011);
-    repeat: no-repeat;
-    position: center;
-    size: cover;
-  }
+  flex-direction: column;
+  text-align: center; 
+}
+
+.portada h2 {
+  margin: 0 auto;
+  font-size: 2em;
+  font-weight: 100;
+  color:black;
+  padding: 45px 0 25px 0;
+}
+
+.portada a {
+  color: $spotify;
+  text-decoration: underline;
+
 }
 
 .center__text {
   margin: auto;
-  font-family: 'Montserrat', sans-serif;
   font-size: 120px;
   text-transform: uppercase;
 }
 
 .glitch {
   position: relative;
-  color: white;
-  mix-blend-mode: lighten;
+  color:  $spotify;
 
   &:before,
   &:after {
@@ -84,7 +95,7 @@ hr {
       position: absolute;
       top: 0;
       width: 100%;
-      background: black;
+      background: white;
       clip: rect(0, 0, 0, 0);
   }
   
@@ -109,7 +120,6 @@ hr {
     }
   }
 }
-
 @keyframes glitch-loop-1 {
   0% { clip: rect(36px, 9999px, 9px, 0) }
   25% { clip: rect(25px, 9999px, 99px, 0) }
@@ -117,7 +127,6 @@ hr {
   75% { clip: rect(30px, 9999px, 92px, 0) }
   100% { clip: rect(91px, 9999px, 98px, 0) }
 }
-
 @keyframes glitch-loop-2 {
   0% { top: -1px; left: 1px; clip: rect(65px, 9999px, 119px, 0) }
   25% { top: -6px; left: 4px; clip: rect(79px, 9999px, 19px, 0) }
@@ -131,21 +140,25 @@ hr {
 rgb(35,207,95)*/
 
 /*----------------GLOBAL-----------------*/
-
+.margin-top{
+  margin-top: 50px;
+}
 .title-letter {
   font-family: 'Proza Libre', sans-serif;
 }
 
 .body-letter {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+}
+.marker-letter {
+  font-family: 'Permanent Marker', cursive;
+}
+
+.portada .body-letter {
+  margin-top: 50px;
 }
 
 body {
-  font-weight: 200;
-  /*background-color: teal;*/
-  background: #f3f0f1;
-  color: white;
-  text-align: center;
   width: 100vw;
   height: 100vh;
 }
@@ -160,17 +173,17 @@ body {
   font-weight: bold;
 }
 
-input {
+.input {
   margin-top: 25px;
   line-height: 100px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  border: 1px solid rgb(35, 207, 95);
+  border: 1px solid  $spotify;
   width: 350px;
   height: 70px !important;
 }
 
-input:focus {
-  outline: 3px solid rgb(35, 207, 95);
+.input:focus {
+  outline: 3px solid  $spotify;
 }
 
 dd.playlist-view .btn {
@@ -179,27 +192,29 @@ dd.playlist-view .btn {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   padding: 15px 40px;
 }
-
+.btn-playlist{
+  width:27%;
+}
 /*----------------CURSOR INPUT PARPADEO-----------------*/
 
 .cursor {
   position: relative;
 }
 
-.cursor i {
+.ccccccursor i {
   position: absolute;
   width: 1px;
-  height: 80%;
+  height: 50%;
   background-color: gray;
-  left: 5px;
-  top: 10%;
+  left: 75px;
+  top: 35%;
   animation-name: blink;
   animation-duration: 800ms;
   animation-iteration-count: infinite;
   opacity: 1;
 }
 
-.cursor input:focus+i {
+.cursor .input:focus+i {
   display: none;
 }
 
@@ -270,152 +285,9 @@ dd.playlist-view .btn {
   }
 }
 
-/*-----------------------------------------------*/
+/*-----------------------PROFILE------------------------*/
 
-h1, h2, h3 {
-  font-weight: 200;
-  text-align: center;
+.user-name{
+  color: $spotify;
+  font-size: 1.5em;
 }
-
-#errorMsg {
-  background-color: red;
-  color: white;
-  font-weight: 400;
-  text-align: center;
-  padding: 10px 0;
-  margin-top: 5px;
-}
-
-a {
-  color: white;
-}
-
-.profile {
-  text-align: center;
-  margin-top: 10%;
-  margin-left: 5%;
-}
-
-.login {
-  text-align: center;
-  margin-top: 10%;
-  margin-left: 5%;
-}
-
-.display {
-  text-align: center;
-  margin-top: 10%;
-  margin-left: 5%;
-}
-
-.edit {
-  text-align: center;
-  margin-top: 10%;
-  margin-left: 5%;
-}
-
-.container {
-  margin: 0;
-  padding: 0;
-}
-
-.center {
-  display: flex;
-  width: 100vw;
-  height: 91.3vh;
-  background-color: black;
-  background-image: url(https://images.unsplash.com/photo-1446080501695-8e929f879f2b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=34658e73aff775c8d4eec54bbfd1c011);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-.center__text {
-  margin: auto;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 120px;
-  text-transform: uppercase;
-}
-
-.glitch {
-  position: relative;
-  color: white;
-  mix-blend-mode: lighten;
-}
-
-.glitch:before, .glitch:after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  width: 100%;
-  background: black;
-  clip: rect(0, 0, 0, 0);
-}
-
-.glitch:before {
-  left: -1px;
-  text-shadow: 1px 0 rgba(255, 0, 0, 0.7);
-}
-
-.glitch:after {
-  left: 1px;
-  text-shadow: -1px 0 rgba(0, 0, 255, 0.7);
-}
-
-.glitch:hover:before {
-  text-shadow: 4px 0 rgba(255, 0, 0, 0.7);
-  animation: glitch-loop-1 0.8s infinite ease-in-out alternate-reverse;
-}
-
-.glitch:hover:after {
-  text-shadow: -5px 0 rgba(0, 0, 255, 0.7);
-  animation: glitch-loop-2 0.8s infinite ease-in-out alternate-reverse;
-}
-
-@keyframes glitch-loop-1 {
-  0% {
-    clip: rect(36px, 9999px, 9px, 0);
-  }
-  25% {
-    clip: rect(25px, 9999px, 99px, 0);
-  }
-  50% {
-    clip: rect(50px, 9999px, 102px, 0);
-  }
-  75% {
-    clip: rect(30px, 9999px, 92px, 0);
-  }
-  100% {
-    clip: rect(91px, 9999px, 98px, 0);
-  }
-}
-
-@keyframes glitch-loop-2 {
-  0% {
-    top: -1px;
-    left: 1px;
-    clip: rect(65px, 9999px, 119px, 0);
-  }
-  25% {
-    top: -6px;
-    left: 4px;
-    clip: rect(79px, 9999px, 19px, 0);
-  }
-  50% {
-    top: -3px;
-    left: 2px;
-    clip: rect(68px, 9999px, 11px, 0);
-  }
-  75% {
-    top: 0px;
-    left: -4px;
-    clip: rect(95px, 9999px, 53px, 0);
-  }
-  100% {
-    top: -1px;
-    left: -1px;
-    clip: rect(31px, 9999px, 149px, 0);
-  }
-}
-
-/*# sourceMappingURL=style.css.map */

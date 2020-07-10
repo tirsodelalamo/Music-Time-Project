@@ -18,10 +18,6 @@ const playlistSchema = new Schema({
     	    type: Number,
         },
 
-    artist: {
-            type: String,
-    },
-
 }, {
     timestamps: true
 })

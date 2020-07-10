@@ -1,10 +1,21 @@
 <div class="profile">
-    <h1>¡Bienvenid@ a tu perfil, {{user.username}}!</h1>
-    <hr>
-    <a class="linkProfile" href="/profile/edit/{{user.id}}">Editar perfil</a>
-    <br>
-    <a class="linkProfile" href="/profile/display">Let's go!</a>
-    <div class="plList">
+    <h2 class="title-letter">Welcome to <em>your very own</em>, <em>super personal</em> and <em>exclusively private
+            profile</em>,
+        <br>
+        <span class="marker-letter user-name">{{user.username}}</span> !</h2>
+    <a class=" text-muted body-letter" href="/profile/edit/{{user.id}}">Edit your
+        profile</a>
+    <div class="row margin-top">
+        <div class="offset-3 col-6 d-flex justify-content-around">
+
+
+        </div>
+        <div class="col-12">
+            <a class="linkProfile btn btn-lg btn-green body-letter" href="/profile/display">Create a playlist!</a>
+
+        </div>
+    </div>
+    <div class="plList marker-letter user-name">
         <h1>Playlists</h1>
     </div>
     <hr>
