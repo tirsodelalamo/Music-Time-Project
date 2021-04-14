@@ -1,12 +1,22 @@
-# Express generator + auth
+# Music Time!
 
-Boilerplate for a basic ExpressJS backend (incl. all auth routes and views - [PassportJS](http://www.passportjs.org/) login & sessions)
+Have you ever needed a playlist according to the time of the trip you are going to do? 'Music Time!' is the solution!
 
-## Install
+## Features 
 
-- Run `npm i` on the root directory
+In this webapp you choose the journey you gonna do and then you will have a playlist according to the time of that trip.
 
-## Run
+## Technologies used in this project
 
-- Create a `.env` file on the root directory to populate the database (`DB`) and port (`PORT`)
-- Run `npm run dev` command on the root directory
+- Javascript
+- HTML
+- CSS
+- Handlebars
+- Express
+- NodeJS
+- Mongoose
+
+
+### Made with :heart: by [Escarlata Fernández](https://www.linkedin.com/in/escarlata-fdez/) and [Tirso del Álamo](https://www.linkedin.com/in/tirsodelalamomartin/) 
+
+
