@@ -17,6 +17,6 @@ In this webapp you choose the journey you gonna do and then you will have a play
 - Mongoose
 
 
-### Made with :heart: by [Escarlata Fernández](https://www.linkedin.com/in/escarlata-fdez/) and [Tirso del Álamo](https://www.linkedin.com/in/tirsodelalamomartin/) 
+
 
 
